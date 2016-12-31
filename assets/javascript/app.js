@@ -36,7 +36,6 @@ function nextObject(){
   timerDiv.innerHTML = "<h1>" + timer + "</h1>";
   document.getElementById("category").innerHTML = jasonData[count].category;
   document.getElementById("question").innerHTML = jasonData[count].question;
-  start();
 
   for(i = 0;i < newArr.length;i++){
     document.getElementById('answer'+ i).innerHTML = newArr[i];
@@ -45,12 +44,18 @@ function nextObject(){
   Array.prototype.forEach.call(answerChoices, function(element){
     element.onclick = function(){
       if(element.innerHTML === correctAnswer){
+        stop();
         alert("Correct!");
+        timer = 10;
+        count++;
+        setTimeout(nextObject, 500);
       } else {
         alert("Wrong!");
       }
     }
   })
+
+  start();
 
 }
 
@@ -65,6 +70,8 @@ function countDown(){
     stop();
     alert("You're out of time");
     timer = 10;
+    count++;
+    setTimeout(nextObject, 500);
   }
 }
 
@@ -95,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function(){
   var nextButton = document.getElementById("next-button");
     
   selectButton.onclick = function(){
-    start();
     count = 0;
     var index1 = selectBox.selectedIndex;
     var index2 = difficultyBox.selectedIndex;
@@ -104,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   nextButton.onclick = function(){
     count++;
-    if(count > 9){
+    if(count > 4){
       alert("Out of questions! Choose another set.")
     } else{
       nextObject();
