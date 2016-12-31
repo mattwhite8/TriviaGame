@@ -28,6 +28,10 @@ function shuffle(array) {
 
 function nextObject(){
 
+  if(count > 4){
+    return gameOver();
+  }
+
   var newArr = jasonData[count].incorrect_answers;
   newArr.push(jasonData[count].correct_answer);
   newArr = shuffle(newArr);
@@ -50,7 +54,11 @@ function nextObject(){
         count++;
         setTimeout(nextObject, 500);
       } else {
+        stop();
         alert("Wrong!");
+        timer = 10;
+        count++;
+        setTimeout(nextObject, 500);
       }
     }
   })
@@ -95,6 +103,12 @@ function callTrivia(category, difficulty){
   });
 }
 
+function gameOver(){
+  timer = 10;
+  timerDiv.innerHTML = "<h1>" + timer + "</h1>";
+  alert("You ran out of questions, choose another category!");
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   var selectBox = document.getElementById("select-box");
   var difficultyBox = document.getElementById("difficulty-box");
@@ -108,13 +122,13 @@ document.addEventListener("DOMContentLoaded", function(){
     callTrivia(selectBox.item(index1).id, difficultyBox.item(index2).id);
   }
 
-  nextButton.onclick = function(){
-    count++;
-    if(count > 4){
-      alert("Out of questions! Choose another set.")
-    } else{
-      nextObject();
-    }
-  }
+  // nextButton.onclick = function(){
+  //   count++;
+  //   if(count > 4){
+  //     alert("Out of questions! Choose another set.")
+  //   } else{
+  //     nextObject();
+  //   }
+  // }
   
 });
