@@ -2,6 +2,9 @@ var count = 0;
 var correctAnswer;
 var answerChoices;
 var jasonData;
+var intervalID;
+var timer = 10;
+var timerDiv = document.getElementById("timer");
 
 //Fisher-Yates shuffle
 function shuffle(array) {
@@ -30,8 +33,10 @@ function nextObject(){
   newArr = shuffle(newArr);
   correctAnswer = jasonData[count].correct_answer;
   answerChoices = document.getElementsByClassName("answer-choice");
+  timerDiv.innerHTML = "<h1>" + timer + "</h1>";
   document.getElementById("category").innerHTML = jasonData[count].category;
   document.getElementById("question").innerHTML = jasonData[count].question;
+  start();
 
   for(i = 0;i < newArr.length;i++){
     document.getElementById('answer'+ i).innerHTML = newArr[i];
@@ -49,9 +54,27 @@ function nextObject(){
 
 }
 
+function start(){
+  intervalID = setInterval(countDown, 1000);
+}
+
+function countDown(){
+  timer--;
+  timerDiv.innerHTML = "<h1>" + timer + "</h1>";
+  if (timer === 0){
+    stop();
+    alert("You're out of time");
+    timer = 10;
+  }
+}
+
+function stop(){
+  clearInterval(intervalID);
+}
+
 function callTrivia(category, difficulty){
   $.ajax({
-    url:'https://opentdb.com/api.php?amount=10',
+    url:'https://opentdb.com/api.php?amount=5',
     data: {
       category: category,
       difficulty: difficulty,
@@ -72,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function(){
   var nextButton = document.getElementById("next-button");
     
   selectButton.onclick = function(){
+    start();
     count = 0;
     var index1 = selectBox.selectedIndex;
     var index2 = difficultyBox.selectedIndex;
