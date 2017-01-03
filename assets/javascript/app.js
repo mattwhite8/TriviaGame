@@ -28,6 +28,8 @@ function shuffle(array) {
 
 function nextObject(){
 
+  timer = 10;
+
   if(count > 4){
     return gameOver();
   }
@@ -45,7 +47,14 @@ function nextObject(){
     document.getElementById('answer'+ i).innerHTML = newArr[i];
   }
 
-  Array.prototype.forEach.call(answerChoices, function(element){
+  answerOnClick(answerChoices);
+
+  start();
+
+}
+
+function answerOnClick(answers){
+    Array.prototype.forEach.call(answers, function(element){
     element.onclick = function(){
       if(element.innerHTML === correctAnswer){
         stop();
@@ -62,9 +71,14 @@ function nextObject(){
       }
     }
   })
+}
 
-  start();
-
+function disableAnswerOnClick(answers){
+  Array.prototype.forEach.call(answers, function(element){
+    element.onclick = function(){
+      alert("Paused!");
+    }
+  })
 }
 
 function start(){
@@ -114,21 +128,31 @@ document.addEventListener("DOMContentLoaded", function(){
   var difficultyBox = document.getElementById("difficulty-box");
   var selectButton = document.getElementById("select-button");
   var nextButton = document.getElementById("next-button");
+  var pauseButton = document.getElementById("pause");
+  var resumeButton = document.getElementById("resume");
+
+  pauseButton.disabled = true;
+  resumeButton.disabled = true;
     
   selectButton.onclick = function(){
+    stop();
+    pauseButton.disabled = false;
     count = 0;
     var index1 = selectBox.selectedIndex;
     var index2 = difficultyBox.selectedIndex;
     callTrivia(selectBox.item(index1).id, difficultyBox.item(index2).id);
   }
 
-  // nextButton.onclick = function(){
-  //   count++;
-  //   if(count > 4){
-  //     alert("Out of questions! Choose another set.")
-  //   } else{
-  //     nextObject();
-  //   }
-  // }
-  
+  pauseButton.onclick = function(){
+    disableAnswerOnClick(answerChoices);
+    resumeButton.disabled = false;
+    stop();
+  }
+
+  resumeButton.onclick = function(){
+    answerOnClick(answerChoices);
+    resumeButton.disabled = true;
+    start();
+  }
+
 });
