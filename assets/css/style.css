@@ -1,6 +1,7 @@
 @font-face {
-	font-family: college;
-	src: url(../fonts/sketch_college.ttf);
+	font-family: sunrise;
+	font-weight: bold;
+	src: url(../fonts/tequilla_sunrise.ttf);
 }
 
 body{
@@ -10,6 +11,15 @@ body{
 	background-size: cover;
 }
 
+form {
+	font-size: 16px;
+}
+
+select {
+	background-color: transparent;
+	border: none;
+}
+
 div {
-	font-family: college;
+	font-family: sunrise;
 }

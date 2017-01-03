@@ -39,7 +39,7 @@ function nextObject(){
   newArr = shuffle(newArr);
   correctAnswer = jasonData[count].correct_answer;
   answerChoices = document.getElementsByClassName("answer-choice");
-  timerDiv.innerHTML = "<h1>" + timer + "</h1>";
+  timerDiv.innerHTML = "<p>" + timer + "</p>";
   document.getElementById("category").innerHTML = jasonData[count].category;
   document.getElementById("question").innerHTML = jasonData[count].question;
 
@@ -87,7 +87,7 @@ function start(){
 
 function countDown(){
   timer--;
-  timerDiv.innerHTML = "<h1>" + timer + "</h1>";
+  timerDiv.innerHTML = "<p>" + timer + "</p>";
   if (timer === 0){
     stop();
     alert("You're out of time");
@@ -119,7 +119,7 @@ function callTrivia(category, difficulty){
 
 function gameOver(){
   timer = 10;
-  timerDiv.innerHTML = "<h1>" + timer + "</h1>";
+  timerDiv.innerHTML = "<p>" + timer + "</p>";
   alert("You ran out of questions, choose another category!");
 }
 

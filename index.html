@@ -3,41 +3,46 @@
 <head>
 	<title>Trivia!</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+<div class="container">
   <form>
-    <select name="categories" id="select-box">
-		<option value="General-Knowledge" id="9">General Knowledge</option>
-		<option value="Entertainment-Books" id="10">Entertainment: Books</option>
-		<option value="Entertainment-Film" id="11">Entertainment: Film</option>
-		<option value="Entertainment-Music" id="12">Entertainment: Music</option>
-		<option value="Entertainment-Musicals-Theatres" id="13">Entertainment: Musicals and Theatres</option>
-		<option value="Entertainment-TV" id="14">Entertainment: Television</option>
-		<option value="Entertainment-Video-Games" id="15">Entertainment: Video Games</option>
-		<option value="Entertainment-Board-Games" id="16">Entertainment: Board Games</option>
-		<option value="Science-Nature" id="17">Science and Nature</option>
-		<option value="Science-Computers" id="18">Science: Computers</option>
-		<option value="Science-Math" id="19">Science: Mathmatics</option>
-		<option value="Mythology" id="20">Mythology</option>
-		<option value="Sports" id="21">Sports</option>
-		<option value="Geography" id="22">Geography</option>
-		<option value="History" id="23">History</option>
-		<option value="Politics" id="24">Politics</option>
-		<option value="Art" id="25">Art</option>
-		<option value="Celebrities" id="26">Celebrities</option>
-		<option value="Animals" id="27">Animals</option>
-		<option value="Vehicles" id="28">Vehicles</option>
-		<!-- <option value="Comics" id="29">Entertainment: Comics</option> -->
-		<option value="Science-Gadgets" id="30">Science: Gadgets</option>
-		<option value="Anime-Manga" id="31">Entertainment: Anime and Manga</option>
-		<option value="Cartoons" id="32">Entertainment: Cartoons and Animation</option>
-    </select>
-    <select name="difficulty" id="difficulty-box">
-    	<option value="easy" id="easy">Easy</option>
-    	<option value="medium" id="medium">Medium</option>
-    	<option value="hard" id="hard">Hard</option>
-    </select>
+  	<div class="form-group">
+	    <select name="categories" id="select-box">
+			<option value="General-Knowledge" id="9">General Knowledge</option>
+			<option value="Entertainment-Books" id="10">Entertainment: Books</option>
+			<option value="Entertainment-Film" id="11">Entertainment: Film</option>
+			<option value="Entertainment-Music" id="12">Entertainment: Music</option>
+			<option value="Entertainment-Musicals-Theatres" id="13">Entertainment: Musicals and Theatres</option>
+			<option value="Entertainment-TV" id="14">Entertainment: Television</option>
+			<option value="Entertainment-Video-Games" id="15">Entertainment: Video Games</option>
+			<option value="Entertainment-Board-Games" id="16">Entertainment: Board Games</option>
+			<option value="Science-Nature" id="17">Science and Nature</option>
+			<option value="Science-Computers" id="18">Science: Computers</option>
+			<option value="Science-Math" id="19">Science: Mathmatics</option>
+			<option value="Mythology" id="20">Mythology</option>
+			<option value="Sports" id="21">Sports</option>
+			<option value="Geography" id="22">Geography</option>
+			<option value="History" id="23">History</option>
+			<option value="Politics" id="24">Politics</option>
+			<option value="Art" id="25">Art</option>
+			<option value="Celebrities" id="26">Celebrities</option>
+			<option value="Animals" id="27">Animals</option>
+			<option value="Vehicles" id="28">Vehicles</option>
+			<!-- <option value="Comics" id="29">Entertainment: Comics</option> -->
+			<option value="Science-Gadgets" id="30">Science: Gadgets</option>
+			<option value="Anime-Manga" id="31">Entertainment: Anime and Manga</option>
+			<option value="Cartoons" id="32">Entertainment: Cartoons and Animation</option>
+	    </select>
+	    <select name="difficulty" id="difficulty-box">
+	    	<option value="easy" id="easy">Easy</option>
+	    	<option value="medium" id="medium">Medium</option>
+	    	<option value="hard" id="hard">Hard</option>
+	    </select>
+    </div>
     <button type="button" id="select-button">Go!</button>
     <button type="button" id="pause">Pause</button>
     <button type="button" id="resume">Resume</button>
@@ -49,8 +54,9 @@
     <div id="answer1" class="answer-choice"></div>
     <div id="answer2" class="answer-choice"></div>
     <div id="answer3" class="answer-choice"></div>
-    <div id="timer"><h1>10</h1></div>
+    <div id="timer"><p>10</p></div>
   </div>
+</div>
   <script src="assets/javascript/app.js"></script>
 </body>
 </html>
