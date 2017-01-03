@@ -1,0 +1,15 @@
+@font-face {
+	font-family: college;
+	src: url(../fonts/sketch_college.ttf);
+}
+
+body{
+	font-size: 32px;
+	color: #b0e0e6;
+	background: url("http://www.clipartkid.com/images/513/index-of-blog-wp-content-uploads-2008-04-8UnebP-clipart.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+div {
+	font-family: college;
+}
