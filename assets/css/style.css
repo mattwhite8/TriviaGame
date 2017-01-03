@@ -33,6 +33,8 @@ div {
 
 .jumbotron {
 	background-color: transparent;
+	padding-top: 0;
+	margin-bottom: 0;
 }
 
 #title, #category, #question, #answer0, #answer1, #answer2, #answer3 {
