@@ -5,6 +5,10 @@ var jasonData;
 var intervalID;
 var timer = 10;
 var timerDiv = document.getElementById("timer");
+var right = 0;
+var wrong = 0;
+var rightDiv = document.getElementById("right");
+var wrongDiv = document.getElementById("wrong");
 
 //Fisher-Yates shuffle
 function shuffle(array) {
@@ -39,7 +43,7 @@ function nextObject(){
   newArr = shuffle(newArr);
   correctAnswer = jasonData[count].correct_answer;
   answerChoices = document.getElementsByClassName("answer-choice");
-  timerDiv.innerHTML = "<p>" + timer + "</p>";
+  timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   document.getElementById("category").innerHTML = jasonData[count].category;
   document.getElementById("question").innerHTML = jasonData[count].question;
 
@@ -61,12 +65,16 @@ function answerOnClick(answers){
         alert("Correct!");
         timer = 10;
         count++;
+        right++;
+        rightDiv.innerHTML = "<p>Correct: " + right;
         setTimeout(nextObject, 500);
       } else {
         stop();
         alert("Wrong!");
         timer = 10;
         count++;
+        wrong++;
+        wrongDiv.innerHTML = "<p>Wrong: " + wrong;
         setTimeout(nextObject, 500);
       }
     }
@@ -87,7 +95,7 @@ function start(){
 
 function countDown(){
   timer--;
-  timerDiv.innerHTML = "<p>" + timer + "</p>";
+  timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   if (timer === 0){
     stop();
     alert("You're out of time");
@@ -119,7 +127,7 @@ function callTrivia(category, difficulty){
 
 function gameOver(){
   timer = 10;
-  timerDiv.innerHTML = "<p>" + timer + "</p>";
+  timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   alert("You ran out of questions, choose another category!");
 }
 

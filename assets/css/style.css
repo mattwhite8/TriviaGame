@@ -39,3 +39,6 @@ div {
 	padding-bottom: 10px;
 }
 
+#answer0, #answer1, #answer2, #answer3 {
+	cursor: pointer;
+}
