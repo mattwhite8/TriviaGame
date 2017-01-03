@@ -9,8 +9,11 @@
 </head>
 <body>
 <div class="container">
-  <form>
-  	<div class="form-group">
+<div class="jumbotron text-center">
+	<h1 id="title">Trivia!</h1>
+	<p>Select your category and difficulty, then click Go!</p>
+	<form>
+		<div class="form-group">
 	    <select name="categories" id="select-box">
 			<option value="General-Knowledge" id="9">General Knowledge</option>
 			<option value="Entertainment-Books" id="10">Entertainment: Books</option>
@@ -42,13 +45,16 @@
 	    	<option value="medium" id="medium">Medium</option>
 	    	<option value="hard" id="hard">Hard</option>
 	    </select>
-    </div>
-    <button type="button" id="select-button">Go!</button>
-    <button type="button" id="pause">Pause</button>
-    <button type="button" id="resume">Resume</button>
-  </form>
+	</div>
+	<div>
+	    <button type="button" class="btn btn-lg" id="select-button">Go!</button>
+	    <button type="button" class="btn btn-lg" id="pause">Pause</button>
+	    <button type="button" class="btn btn-lg" id="resume">Resume</button>
+	</div>
+	</form>
+</div>
   <div id="main">
-    <div id="category"></div>
+    <div class="text-center" id="category"></div>
     <div id="question"></div>
     <div id="answer0" class="answer-choice"></div>
     <div id="answer1" class="answer-choice"></div>
