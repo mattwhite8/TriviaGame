@@ -9,6 +9,8 @@ var right = 0;
 var wrong = 0;
 var rightDiv = document.getElementById("right");
 var wrongDiv = document.getElementById("wrong");
+var pauseButton = document.getElementById("pause");
+var resumeButton = document.getElementById("resume");
 
 //Fisher-Yates shuffle
 function shuffle(array) {
@@ -127,6 +129,8 @@ function callTrivia(category, difficulty){
 function gameOver(){
   timer = 20;
   timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
+  pauseButton.disabled = true;
+  resumeButton.disabled = true;
   alertMessage("You ran out of questions, choose another category!");
 }
 
