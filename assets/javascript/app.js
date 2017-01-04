@@ -3,7 +3,7 @@ var correctAnswer;
 var answerChoices;
 var jasonData;
 var intervalID;
-var timer = 10;
+var timer = 20;
 var timerDiv = document.getElementById("timer");
 var right = 0;
 var wrong = 0;
@@ -32,7 +32,7 @@ function shuffle(array) {
 
 function nextObject(){
 
-  timer = 10;
+  timer = 20;
 
   if(count > 4){
     return gameOver();
@@ -62,20 +62,18 @@ function answerOnClick(answers){
     element.onclick = function(){
       if(element.innerHTML === correctAnswer){
         stop();
-        alert("Correct!");
-        timer = 10;
+        alertMessage("Correct!");
+        timer = 20;
         count++;
         right++;
         rightDiv.innerHTML = "<p>Correct: " + right;
-        setTimeout(nextObject, 500);
       } else {
         stop();
-        alert("Wrong!");
-        timer = 10;
+        alertMessage("Wrong!");
+        timer = 20;
         count++;
         wrong++;
         wrongDiv.innerHTML = "<p>Wrong: " + wrong;
-        setTimeout(nextObject, 500);
       }
     }
   })
@@ -84,7 +82,7 @@ function answerOnClick(answers){
 function disableAnswerOnClick(answers){
   Array.prototype.forEach.call(answers, function(element){
     element.onclick = function(){
-      alert("Paused!");
+      alertMessage("Paused!");
     }
   })
 }
@@ -98,10 +96,9 @@ function countDown(){
   timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   if (timer === 0){
     stop();
-    alert("You're out of time");
-    timer = 10;
+    alertMessage("You're out of time");
+    timer = 20;
     count++;
-    setTimeout(nextObject, 500);
   }
 }
 
@@ -126,9 +123,17 @@ function callTrivia(category, difficulty){
 }
 
 function gameOver(){
-  timer = 10;
+  timer = 20;
   timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
-  alert("You ran out of questions, choose another category!");
+  alertMessage("You ran out of questions, choose another category!");
+}
+
+function alertMessage(message){
+  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'>" + message + "</div>";
+  document.getElementById("alertDiv").onclick = function(){
+    setTimeout(nextObject, 500);
+    document.getElementById("game-alert").style.display = 'none';
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -143,6 +148,9 @@ document.addEventListener("DOMContentLoaded", function(){
   resumeButton.disabled = true;
     
   selectButton.onclick = function(){
+    if (document.getElementById("game-alert")){
+      document.getElementById("game-alert").style.display = 'none';
+    }
     stop();
     pauseButton.disabled = false;
     count = 0;
