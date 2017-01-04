@@ -32,6 +32,8 @@ function shuffle(array) {
 
 function nextObject(){
 
+  console.log("nextObject called");
+
   timer = 20;
 
   if(count > 4){
@@ -82,7 +84,7 @@ function answerOnClick(answers){
 function disableAnswerOnClick(answers){
   Array.prototype.forEach.call(answers, function(element){
     element.onclick = function(){
-      alertMessage("Paused!");
+      alertMessagePaused("Paused!");
     }
   })
 }
@@ -96,7 +98,7 @@ function countDown(){
   timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   if (timer === 0){
     stop();
-    alertMessage("You're out of time");
+    alertMessageP("You're out of time");
     timer = 20;
     count++;
   }
@@ -132,6 +134,13 @@ function alertMessage(message){
   document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'>" + message + "</div>";
   document.getElementById("alertDiv").onclick = function(){
     setTimeout(nextObject, 500);
+    document.getElementById("game-alert").style.display = 'none';
+  }
+}
+
+function alertMessagePaused(message){
+  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'>" + message + "</div>";
+  document.getElementById("alertDiv").onclick = function(){
     document.getElementById("game-alert").style.display = 'none';
   }
 }
