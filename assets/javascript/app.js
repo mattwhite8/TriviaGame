@@ -139,7 +139,7 @@ function gameOver(){
 }
 
 function alertMessage(message){
-  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'><h3>" + message + "</h3></div>";
+  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'><h3>" + message + "</h3><h4>The answer is: " + correctAnswer + "</div>";
   document.getElementById("alertDiv").onclick = function(){
     setTimeout(nextObject, 500);
     document.getElementById("game-alert").style.display = 'none';
