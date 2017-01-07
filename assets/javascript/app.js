@@ -7,8 +7,10 @@ var timer = 20;
 var timerDiv = document.getElementById("timer");
 var right = 0;
 var wrong = 0;
+var skipped = 0;
 var rightDiv = document.getElementById("right");
 var wrongDiv = document.getElementById("wrong");
+var skipDiv = document.getElementById("skipped");
 var pauseButton = document.getElementById("pause");
 var resumeButton = document.getElementById("resume");
 
@@ -100,9 +102,11 @@ function countDown(){
   timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   if (timer === 0){
     stop();
-    alertMessageP("You're out of time");
+    alertMessage("You're out of time");
     timer = 20;
     count++;
+    skipped++;
+    skipDiv.innerHTML = "<p>Skipped: " + skipped + "</p>";
   }
 }
 
@@ -135,7 +139,7 @@ function gameOver(){
 }
 
 function alertMessage(message){
-  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'>" + message + "</div>";
+  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'><h3>" + message + "</h3></div>";
   document.getElementById("alertDiv").onclick = function(){
     setTimeout(nextObject, 500);
     document.getElementById("game-alert").style.display = 'none';
@@ -143,7 +147,7 @@ function alertMessage(message){
 }
 
 function alertMessagePaused(message){
-  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'>" + message + "</div>";
+  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'><h3>" + message + "</h3></div>";
   document.getElementById("alertDiv").onclick = function(){
     document.getElementById("game-alert").style.display = 'none';
   }
