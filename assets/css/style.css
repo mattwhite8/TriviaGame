@@ -45,6 +45,10 @@ div {
 	cursor: pointer;
 }
 
+#answer0:hover, #answer1:hover, #answer2:hover, #answer3:hover {
+	color: red;
+}
+
 #game-alert {
 	height: 300px;
     position: absolute;
