@@ -142,7 +142,7 @@ function callGiphy(search){
 
   }).done(function(returnData) {
     console.log(returnData);
-    giphy = returnData.data[0].images.fixed_height_small.url;
+    giphy = returnData.data[0].images.fixed_height.url;
     document.getElementById("giphy").innerHTML = "<img src=" + giphy + ">";
   });
 }
