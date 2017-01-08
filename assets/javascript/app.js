@@ -134,7 +134,7 @@ function callTrivia(category, difficulty){
 function callGiphy(search){
   search = search.replace(' ','+');
   $.ajax({
-    url: 'http://api.giphy.com/v1/gifs/search?',
+    url: 'https://api.giphy.com/v1/gifs/search?',
     data: {
       api_key: 'dc6zaTOxFJmzC',
       q: search
