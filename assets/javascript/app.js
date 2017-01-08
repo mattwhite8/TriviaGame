@@ -152,7 +152,7 @@ function gameOver(){
   timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   pauseButton.disabled = true;
   resumeButton.disabled = true;
-  alertMessagePaused("You ran out of questions, choose another category!");
+  alertMessageGameOver("You ran out of questions, choose another category!");
 }
 
 function alertMessage(message){
@@ -162,6 +162,18 @@ function alertMessage(message){
     setTimeout(nextObject, 500);
     document.getElementById("game-alert").style.display = 'none';
   }
+}
+
+function alertMessageGameOver(message){
+  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'><h3>" + message + "</h3></div>";
+  $("#main div").html('');
+  Array.prototype.forEach.call(answerChoices, function(element){
+    element.onclick = '';
+  })
+  document.getElementById("alertDiv").onclick = function(){
+    document.getElementById("game-alert").style.display = 'none';
+  }
+
 }
 
 function alertMessagePaused(message){
@@ -189,6 +201,12 @@ document.addEventListener("DOMContentLoaded", function(){
     stop();
     pauseButton.disabled = false;
     count = 0;
+    right = 0;
+    wrong = 0;
+    skipped = 0;
+    rightDiv.innerHTML = "<p>Correct: " + right;
+    wrongDiv.innerHTML = "<p>Wrong: " + wrong;
+    skipDiv.innerHTML = "<p>Skipped: " + skipped + "</p>";
     var index1 = selectBox.selectedIndex;
     var index2 = difficultyBox.selectedIndex;
     callTrivia(selectBox.item(index1).id, difficultyBox.item(index2).id);
