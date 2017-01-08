@@ -13,6 +13,7 @@ var wrongDiv = document.getElementById("wrong");
 var skipDiv = document.getElementById("skipped");
 var pauseButton = document.getElementById("pause");
 var resumeButton = document.getElementById("resume");
+var giphy;
 
 //Fisher-Yates shuffle
 function shuffle(array) {
@@ -130,16 +131,33 @@ function callTrivia(category, difficulty){
   });
 }
 
+function callGiphy(search){
+  search = search.replace(' ','+');
+  $.ajax({
+    url: 'http://api.giphy.com/v1/gifs/search?',
+    data: {
+      api_key: 'dc6zaTOxFJmzC',
+      q: search
+    }
+
+  }).done(function(returnData) {
+    console.log(returnData);
+    giphy = returnData.data[0].images.fixed_height_small.url;
+    document.getElementById("giphy").innerHTML = "<img src=" + giphy + ">";
+  });
+}
+
 function gameOver(){
   timer = 20;
   timerDiv.innerHTML = "<p>Timer: " + timer + "</p>";
   pauseButton.disabled = true;
   resumeButton.disabled = true;
-  alertMessage("You ran out of questions, choose another category!");
+  alertMessagePaused("You ran out of questions, choose another category!");
 }
 
 function alertMessage(message){
-  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'><h3>" + message + "</h3><h4>The answer is: " + correctAnswer + "</div>";
+  document.getElementById("alertDiv").innerHTML = "<div id='game-alert' class='text-center'><h3>" + message + "</h3><h4>The answer is: " + correctAnswer + "</h4><div id=giphy></div></div>";
+  callGiphy(correctAnswer);
   document.getElementById("alertDiv").onclick = function(){
     setTimeout(nextObject, 500);
     document.getElementById("game-alert").style.display = 'none';
